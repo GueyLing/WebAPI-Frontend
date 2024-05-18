@@ -1,0 +1,44 @@
+<nav class="navbar">
+    <div class="navbar-left">
+      <img src="assets/nba-logo_2x.png" alt="Logo" class="logo">
+    </div>
+    <div class="navbar-right">
+      <button class="logout-button" routerLink="/">Logout</button>
+    </div>
+  </nav>
+  <br>
+  <div class="container">
+    <h1>NBA Players</h1>
+    <button class="btn btn-primary float-right" style="margin-bottom: 10px;" routerLink="/add-player">
+      Add Player
+    </button>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Player ID</th>
+        <th>Image URL</th>
+        <th style="width: 200px;">Actions</th>
+        <!-- Add more columns as needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{ player.name }}</td>
+        <td>{{ player.player_id }}</td>
+        <td class="url">{{ player.image_url }}</td>
+        <!-- Add more cells as needed -->
+        <td>  
+        <button class="btn btn-success" style="margin-right: 10px;" [routerLink]="['/edit-player', player._id]">
+          Edit
+        </button>
+        <button class="btn btn-danger" (click)="deletePlayer(player._id)">
+          Delete
+        </button>
+      </td>
+        <!-- Add more data as needed -->
+      </tr>
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
+  </div>

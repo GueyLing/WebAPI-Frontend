@@ -1,0 +1,32 @@
+<nav class="navbar">
+    <div class="navbar-left">
+      <img src="assets/nba-logo_2x.png" alt="Logo" class="logo">
+    </div>
+    <div class="navbar-right">
+      <button class="logout-button" routerLink="/">Logout</button>
+    </div>
+  </nav>
+  <br>
+<div class="container">
+    <h2>Edit Player</h2>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+<form>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input [(ngModel)]="player.name" name="name" id="name" class="form-control" (input)="onNameChange()">
+    </div>
+    <div class="form-group">
+        <label for="player_id">Player ID:</label>
+        <input name="player_id" id="player_id" class="form-control" [value]="player.player_id" readonly>
+    </div>
+    <div class="form-group">
+        <label for="image_url">Image URL:</label>
+        <input [(ngModel)]="player.image_url" name="image_url" id="image_url" class="form-control">
+    </div>
+    <!-- Add more fields as needed -->
+    <button (click)="editPlayer()" class="btn btn-primary">Edit Player</button>
+    <button routerLink="/crud_players" class="btn btn-secondary" style="margin-left: 10px;">Cancel</button>
+</form>
+</div>

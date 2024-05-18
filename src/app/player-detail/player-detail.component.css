@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    background-color: #f8f9fa;
+  }
+  
+  .logo {
+    height: 80px;
+    width: 50px;
+    margin-left: 20px;
+  }
+  
+  .logout-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+  }
+  
+  .news-item {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+  }

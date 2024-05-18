@@ -1,0 +1,39 @@
+<!-- Add the Bootstrap CSS file -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="login-box">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container">
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    <div *ngIf="registered" class="alert alert-success">
+        Registration successful!
+    </div>
+    <div class="form-group">
+        <label for="name">Username</label>
+        <input id="name" type="text" formControlName="name" required class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" required class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" formControlName="role" required class="form-control">
+            <option value="">Select Role</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+    </div>
+    <div class="button-container">
+    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+</div>
+<br>
+<div class="button-container">
+<a href="/register">Register User Account</a>
+</div>
+</form>
+</div>
+
+<!-- Add the Bootstrap JavaScript file -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -1,0 +1,86 @@
+<nav class="navbar">
+    <div class="navbar-left">
+      <img src="assets/nba-logo_2x.png" alt="Logo" class="logo">
+    </div>
+    <div class="navbar-right">
+      <button class="logout-button" routerLink="/">Logout</button>
+    </div>
+  </nav>
+  <br>
+  <div class="container">
+    <a class="back-link" routerLink="/user_dashboard">Back</a>
+    <h1>Player Detail</h1>
+    <br>
+    <div class="container">
+        <div class="row">
+          <!-- Player image -->
+          <div class="col-md-6">
+            <img [src]="player.image_url" alt="Player image" style="width: 450px; height: 450px;">
+          </div>
+      
+          <!-- Player details -->
+          <div class="col-md-6">
+            <h2>{{ player.name }}</h2>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th></th>
+                  <th>Information</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Weight</td>
+                <td>{{ player.weight }}lb</td>
+              </tr>
+              <tr>
+                <td>Height</td>
+                <td>{{ player.height }}</td>
+              </tr>
+              <tr>
+                <td>College</td>
+                <td>{{ player.college }}</td>
+              </tr>
+              <tr>
+                <td>Position</td>
+                <td>{{ player.position }}</td>
+              </tr>
+              <tr>
+                <td>Jersey Number</td>
+                <td>{{ player.jersey_number }}</td>
+              </tr>
+              <tr>
+                <td>Country</td>
+                <td>{{ player.country }}</td>
+              </tr>
+              <tr>
+                <td>Team</td>
+                <td>{{ player.team }}</td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+        <br>
+      </div>
+      <!-- section for news -->
+      <div>
+        <br>
+        <h2>News about {{ player.name }}</h2>
+        <div *ngIf="isLoading">Loading...</div>
+        <div *ngIf="!isLoading">
+          <div *ngIf="player.news.length > 0; else noNews">
+        <div *ngFor="let news of player.news" class="news-item">
+          <h3>{{ news.title }}</h3>
+          <p>{{ news.description }}<a [href]="news.url"> Read more</a></p>
+          <img [src]="news.urlToImage" alt="News image" style="width: 300px; height: 200px;">
+        </div>    
+      </div>    
+        <ng-template #noNews>
+         No related news
+        </ng-template>
+        <br>
+      </div>
+      </div>
+      <!-- end section -->
+  </div>
