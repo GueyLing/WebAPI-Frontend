@@ -8,10 +8,11 @@ import { EditPlayerComponent } from './edit-player/edit-player.component';
 import { RegisterComponent } from './register/register.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
+import { AdminGuard } from './admin.guard';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'crud_players', component: CrudPlayersComponent },
+  { path: 'crud_players', component: CrudPlayersComponent, canActivate: [AdminGuard] },
   { path: 'add-player', component: AddPlayerComponent },
   { path: 'edit-player/:id', component: EditPlayerComponent },
   { path: 'register', component: RegisterComponent },

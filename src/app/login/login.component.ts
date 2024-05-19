@@ -35,8 +35,10 @@ export class LoginComponent implements OnInit {
         console.log(res);
         localStorage.setItem('token', res.token);
         if (res.message === 'login_success_admin') {
+          localStorage.setItem('role', 'admin');
           this.router.navigate(['/crud_players']);
         } else if (res.message === 'login_success_user'){
+          localStorage.setItem('role', 'user');
           this.router.navigate(['/user_dashboard']);
         } else{
           this.router.navigate(['/'], { queryParams: { error: 'Invalid Credentials' } });
