@@ -28,7 +28,7 @@ export class PlayerDetailComponent {
       })
     };
 
-    this.http.get(`http://localhost:3000/api/players/${id}`, httpOptions)
+    this.http.get(`https://webapi-backend-64d1.onrender.com/api/players/${id}`, httpOptions)
       .subscribe((res: any) => {
         this.player = res.player;
         if (this.player.player_id) {
@@ -45,7 +45,7 @@ export class PlayerDetailComponent {
         'Authorization': 'Bearer ' + token
       })
     };
-    this.http.get(`http://localhost:3000/external-api/${id}`, httpOptions)
+    this.http.get(`https://webapi-backend-64d1.onrender.com/external-api/${id}`, httpOptions)
       .subscribe((res: any) => {
         console.log(res);
         this.player = {
@@ -69,7 +69,7 @@ export class PlayerDetailComponent {
         'Authorization': 'Bearer ' + token
       })
     };
-    this.http.get(`http://localhost:3000/external-api/news/${id}`, httpOptions)
+    this.http.get(`https://webapi-backend-64d1.onrender.com/external-api/news/${id}`, httpOptions)
       .subscribe((res: any) => {
         this.player.news = res.articles.map((article: any) => ({
           title: article.title,

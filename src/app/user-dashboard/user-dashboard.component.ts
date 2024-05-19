@@ -18,7 +18,7 @@ export class UserDashboardComponent {
         'Authorization': 'Bearer ' + token
       })
     };
-    this.http.get('http://localhost:3000/api/players', httpOptions)
+    this.http.get('https://webapi-backend-64d1.onrender.com/api/players', httpOptions)
       .subscribe((res: any) => {
         this.players = res.players;
       });

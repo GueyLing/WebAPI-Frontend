@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PlayerService {
 
-  private apiUrl = 'http://localhost:3000/external-api';
+  private apiUrl = 'https://webapi-backend-64d1.onrender.com/external-api';
 
   constructor(private http: HttpClient) { }
 

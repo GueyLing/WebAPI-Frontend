@@ -21,7 +21,7 @@ export class RegisterComponent {
 
   createUser() {
     if (this.user.name && this.user.password) {
-      this.http.post('http://localhost:3000/users', this.user)
+      this.http.post('https://webapi-backend-64d1.onrender.com/users', this.user)
         .subscribe((res: any) => {
           console.log(res.message);
           this.router.navigate(['/'], { queryParams: { registered: 'User registration success' } });

@@ -18,7 +18,7 @@ export class CrudPlayersComponent {
         'Authorization': 'Bearer ' + token
       })
     };
-    this.http.get('http://localhost:3000/api/players', httpOptions)
+    this.http.get('https://webapi-backend-64d1.onrender.com/api/players', httpOptions)
       .subscribe((res: any) => {
         this.players = res.players;
       });
@@ -31,7 +31,7 @@ export class CrudPlayersComponent {
         'Authorization': 'Bearer ' + token
       })
     };
-    this.http.delete(`http://localhost:3000/api/players/${id}`, httpOptions)
+    this.http.delete(`https://webapi-backend-64d1.onrender.com/api/players/${id}`, httpOptions)
       .subscribe((res: any) => {
         console.log(res.message);
         // Here you might want to remove the player from your local players array as well

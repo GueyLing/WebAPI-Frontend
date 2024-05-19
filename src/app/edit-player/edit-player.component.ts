@@ -34,7 +34,7 @@ export class EditPlayerComponent {
           'Authorization': 'Bearer ' + token
         })
       };
-    this.http.put(`http://localhost:3000/api/players/${this.id}`, this.player, httpOptions)
+    this.http.put(`https://webapi-backend-64d1.onrender.com/api/players/${this.id}`, this.player, httpOptions)
       .subscribe((res: any) => {
         console.log(res.message);
         this.router2.navigate(['/crud_players']);
@@ -50,7 +50,7 @@ export class EditPlayerComponent {
         'Authorization': 'Bearer ' + token
       })
     };
-    this.http.get(`http://localhost:3000/api/players/${id}`, httpOptions)
+    this.http.get(`https://webapi-backend-64d1.onrender.com/api/players/${id}`, httpOptions)
       .subscribe((res: any) => {
         this.player = res.player;
       });

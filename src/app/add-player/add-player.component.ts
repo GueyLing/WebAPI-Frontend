@@ -28,7 +28,7 @@ export class AddPlayerComponent {
       })
     };
     if (this.player.name && this.player.player_id && this.player.image_url) {
-    this.http.post('http://localhost:3000/api/players', this.player, httpOptions)
+    this.http.post('https://webapi-backend-64d1.onrender.com/api/players', this.player, httpOptions)
       .subscribe((res: any) => {
         console.log(res.message);
         this.router.navigate(['/crud_players']);
