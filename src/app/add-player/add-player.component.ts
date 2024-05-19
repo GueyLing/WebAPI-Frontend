@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerService } from '../player.service';
@@ -21,8 +21,14 @@ export class AddPlayerComponent {
   }
 
   createPlayer() {
+    const token = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
+    };
     if (this.player.name && this.player.player_id && this.player.image_url) {
-    this.http.post('http://localhost:3000/api/players', this.player)
+    this.http.post('http://localhost:3000/api/players', this.player, httpOptions)
       .subscribe((res: any) => {
         console.log(res.message);
         this.router.navigate(['/crud_players']);

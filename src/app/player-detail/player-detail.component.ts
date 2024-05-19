@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -21,7 +21,14 @@ export class PlayerDetailComponent {
   }
   
   getPlayer(id: string) {
-    this.http.get(`http://localhost:3000/api/players/${id}`)
+    const token = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
+    };
+
+    this.http.get(`http://localhost:3000/api/players/${id}`, httpOptions)
       .subscribe((res: any) => {
         this.player = res.player;
         if (this.player.player_id) {
@@ -32,7 +39,13 @@ export class PlayerDetailComponent {
   }
 
   getNBAPlayerInfo(id: string) {
-    this.http.get(`http://localhost:3000/external-api/${id}`)
+    const token = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    this.http.get(`http://localhost:3000/external-api/${id}`, httpOptions)
       .subscribe((res: any) => {
         console.log(res);
         this.player = {
@@ -50,7 +63,13 @@ export class PlayerDetailComponent {
   }
 
   getNBANews(id: string) {
-    this.http.get(`http://localhost:3000/external-api/news/${id}`)
+    const token = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    this.http.get(`http://localhost:3000/external-api/news/${id}`, httpOptions)
       .subscribe((res: any) => {
         this.player.news = res.articles.map((article: any) => ({
           title: article.title,

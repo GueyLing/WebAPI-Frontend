@@ -25,7 +25,13 @@ export class CrudPlayersComponent {
   }
 
   deletePlayer(id: string) {
-    this.http.delete(`http://localhost:3000/api/players/${id}`)
+    const token = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    this.http.delete(`http://localhost:3000/api/players/${id}`, httpOptions)
       .subscribe((res: any) => {
         console.log(res.message);
         // Here you might want to remove the player from your local players array as well

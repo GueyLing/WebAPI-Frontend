@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerService } from '../player.service';
 
@@ -28,7 +28,13 @@ export class EditPlayerComponent {
 
   editPlayer() {
     if (this.player.name && this.player.player_id && this.player.image_url) {
-    this.http.put(`http://localhost:3000/api/players/${this.id}`, this.player)
+      const token = localStorage.getItem('token');
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + token
+        })
+      };
+    this.http.put(`http://localhost:3000/api/players/${this.id}`, this.player, httpOptions)
       .subscribe((res: any) => {
         console.log(res.message);
         this.router2.navigate(['/crud_players']);
@@ -38,7 +44,13 @@ export class EditPlayerComponent {
   }
 
   getPlayer(id: string) {
-    this.http.get(`http://localhost:3000/api/players/${id}`)
+    const token = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    this.http.get(`http://localhost:3000/api/players/${id}`, httpOptions)
       .subscribe((res: any) => {
         this.player = res.player;
       });
