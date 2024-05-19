@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-crud-players',
@@ -12,7 +12,13 @@ export class CrudPlayersComponent {
   constructor(private http: HttpClient) { }
   
   ngOnInit() {
-    this.http.get('http://localhost:3000/api/players')
+    const token = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    this.http.get('http://localhost:3000/api/players', httpOptions)
       .subscribe((res: any) => {
         this.players = res.players;
       });

@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.http.post('http://localhost:3000/users/login', this.loginForm.value)
       .subscribe((res: any) => {
+        console.log(res);
+        localStorage.setItem('token', res.token);
         if (res.message === 'login_success_admin') {
           this.router.navigate(['/crud_players']);
         } else if (res.message === 'login_success_user'){
