@@ -8,9 +8,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./player-detail.component.css']
 })
 export class PlayerDetailComponent {
-  player = { name: '', player_id: null, image_url: '', height: '', weight: '', college: '', position: '', jersey_number: '', country: '', team: '' ,  news: [{ title: '', url: '', urlToImage: '', description: '' }] };// replace with your actual player properties
+  player = { name: '', player_id: null, image_url: '', height: '', weight: '', college: '', position: '', jersey_number: '', country: '', team: '' ,  news: [{ title: '', url: '', urlToImage: '', description: '' }], isBookmarked: false };// replace with your actual player properties
   id: string | undefined;
   isLoading = true;
+
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -79,5 +80,12 @@ export class PlayerDetailComponent {
         }));
         this.isLoading = false;
       });
+  }
+
+  toggleBookmark() {
+    const userId = localStorage.getItem('user_id');
+    this.http.post(`https://webapi-backend-64d1.onrender.com/users/api/users/${userId}/bookmark/${this.player.player_id}`, {}).subscribe((response: any) => {
+      this.player.isBookmarked = response.isBookmarked;
+    });
   }
 }

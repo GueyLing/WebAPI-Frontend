@@ -15,7 +15,7 @@
         <h1>Player Detail</h1>
       </div>
       <div class="col-md-6 text-right">
-        <button class="btn btn-primary">Bookmark Player</button>
+        <button class="btn btn-primary"(click)="toggleBookmark()">{{ player.isBookmarked ? 'Remove from Bookmark' : 'Bookmark Player' }}</button>
       </div>
     </div>
     <br>

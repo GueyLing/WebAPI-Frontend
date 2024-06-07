@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
         localStorage.setItem('token', res.token);
+        localStorage.setItem('user_id', res.user_id);
         if (res.message === 'login_success_admin') {
           localStorage.setItem('role', 'admin');
           this.router.navigate(['/crud_players']);
