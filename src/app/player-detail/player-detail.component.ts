@@ -35,6 +35,8 @@ export class PlayerDetailComponent {
         if (this.player.player_id) {
           this.getNBAPlayerInfo(this.player.player_id);
           this.getNBANews(this.player.player_id);
+
+          // this.player.isBookmarked = this.user.bookmarkedPlayers.includes(this.id);
         }
       });
   }
@@ -83,14 +85,8 @@ export class PlayerDetailComponent {
   }
 
   toggleBookmark() {
-    const token = localStorage.getItem('token');
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + token
-      })
-    };
     const userId = localStorage.getItem('user_id');
-    this.http.post(`https://webapi-backend-64d1.onrender.com/users/api/users/${userId}/bookmark/${this.player.player_id}`, httpOptions).subscribe((response: any) => {
+    this.http.post(`http://localhost:10000/users/api/users/${userId}/bookmark/${this.id}`, {}).subscribe((response: any) => {
       this.player.isBookmarked = response.isBookmarked;
     });
   }
