@@ -83,8 +83,14 @@ export class PlayerDetailComponent {
   }
 
   toggleBookmark() {
+    const token = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
+    };
     const userId = localStorage.getItem('user_id');
-    this.http.post(`https://webapi-backend-64d1.onrender.com/users/api/users/${userId}/bookmark/${this.player.player_id}`, {}).subscribe((response: any) => {
+    this.http.post(`https://webapi-backend-64d1.onrender.com/users/api/users/${userId}/bookmark/${this.player.player_id}`, httpOptions).subscribe((response: any) => {
       this.player.isBookmarked = response.isBookmarked;
     });
   }
