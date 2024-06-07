@@ -11,7 +11,8 @@ import { AddPlayerComponent } from './add-player/add-player.component';
 import { EditPlayerComponent } from './edit-player/edit-player.component';
 import { RegisterComponent } from './register/register.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { PlayerDetailComponent } from './player-detail/player-detail.component'; 
+import { PlayerDetailComponent } from './player-detail/player-detail.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; 
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
