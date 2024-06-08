@@ -12,7 +12,8 @@ import { EditPlayerComponent } from './edit-player/edit-player.component';
 import { RegisterComponent } from './register/register.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BookmarkedPlayersComponent } from './bookmarked-players/bookmarked-players.component'; 
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     EditPlayerComponent,
     RegisterComponent,
     UserDashboardComponent,
-    PlayerDetailComponent
+    PlayerDetailComponent,
+    BookmarkedPlayersComponent
   ],
   imports: [
     BrowserModule,

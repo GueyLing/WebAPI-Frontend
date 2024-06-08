@@ -10,6 +10,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { AdminGuard } from './admin.guard';
 import { UserGuard } from './user.guard';
+import { BookmarkedPlayersComponent } from './bookmarked-players/bookmarked-players.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   { path: 'edit-player/:id', component: EditPlayerComponent, canActivate: [AdminGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'user_dashboard', component: UserDashboardComponent, canActivate: [UserGuard]},
-  { path:'player_details/:id', component: PlayerDetailComponent, canActivate: [UserGuard]}
+  { path:'player_details/:id', component: PlayerDetailComponent, canActivate: [UserGuard]},
+  { path:'bookmarked-players', component: BookmarkedPlayersComponent, canActivate: [UserGuard]}
 ];
 
 @NgModule({

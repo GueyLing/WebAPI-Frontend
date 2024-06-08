@@ -1,9 +1,11 @@
 <nav class="navbar">
     <div class="navbar-left">
+      <a [routerLink]="['/user_dashboard']">
       <img src="assets/nba-logo_2x.png" alt="Logo" class="logo">
+    </a>
     </div>
     <div class="navbar-right">
-      <a routerLink="/#" style="margin-right: 10px; color: black; text-decoration: none;">Bookmarked Players</a>
+      <a routerLink="/bookmarked-players" style="margin-right: 10px; color: black; text-decoration: none;">Bookmarked Players</a>
       <button class="logout-button" routerLink="/">Logout</button>
     </div>
   </nav>
