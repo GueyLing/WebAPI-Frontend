@@ -35,7 +35,15 @@ export class PlayerDetailComponent {
         if (this.player.player_id) {
           this.getNBAPlayerInfo(this.player.player_id);
           this.getNBANews(this.player.player_id);
-
+          const userId = localStorage.getItem('user_id');
+          this.http.get(`https://webapi-backend-64d1.onrender.com/users/isBookmarked/users/${userId}/bookmark/${this.id}`, {}).subscribe((response: any) => {
+            this.player.isBookmarked = response.isBookmarked;
+            console.log(response);
+            if(response.isBookmarked === undefined) {
+              console.log('undefined');
+              this.player.isBookmarked = false;
+            }
+          });    
           // this.player.isBookmarked = this.user.bookmarkedPlayers.includes(this.id);
         }
       });
@@ -86,8 +94,8 @@ export class PlayerDetailComponent {
 
   toggleBookmark() {
     const userId = localStorage.getItem('user_id');
-    this.http.post(`http://localhost:10000/users/api/users/${userId}/bookmark/${this.id}`, {}).subscribe((response: any) => {
-      this.player.isBookmarked = response.isBookmarked;
+    this.http.post(`https://webapi-backend-64d1.onrender.com/users/api/users/${userId}/bookmark/${this.id}`, {}).subscribe((response: any) => {
+      this.player.isBookmarked = !this.player.isBookmarked;
     });
   }
 }
