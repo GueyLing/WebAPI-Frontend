@@ -26,7 +26,7 @@ export class AddPlayerComponent {
         'Authorization': 'Bearer ' + token
       })
     };
-    this.http.get('http://localhost:10000/external-api', httpOptions).subscribe((response: any) => {
+    this.http.get('https://webapi-backend-64d1.onrender.com/external-api', httpOptions).subscribe((response: any) => {
       this.players = response.data;
       console.log('Players:', this.players);
     });
