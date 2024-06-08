@@ -13,10 +13,12 @@
       {{ errorMessage }}
     </div>
 <form>
-    <div class="form-group">
-        <label for="name">Name:</label>
-        <input [(ngModel)]="player.name" name="name" id="name" class="form-control" (input)="onNameChange()">
-    </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <select [(ngModel)]="player.name" name="name" id="name" class="form-control" (change)="onNameChange()">
+      <option *ngFor="let player of players" [value]="player.first_name + ' ' + player.last_name">{{player.first_name + ' ' + player.last_name}}</option>
+    </select>
+  </div>
     <div class="form-group">
         <label for="player_id">Player ID:</label>
         <input name="player_id" id="player_id" class="form-control" [value]="player.player_id" readonly>

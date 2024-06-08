@@ -11,12 +11,24 @@ import { PlayerService } from '../player.service';
 export class AddPlayerComponent {
   player = { name: '', player_id: '', image_url: ''};
   errorMessage: string | null = null;
+  players: any[] = [];
 
   constructor(private http: HttpClient, private router: Router, private playerService: PlayerService, private route: ActivatedRoute) { }
   
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.errorMessage = params['error'] || null;
+    });
+
+    const token = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
+    };
+    this.http.get('http://localhost:10000/external-api', httpOptions).subscribe((response: any) => {
+      this.players = response.data;
+      console.log('Players:', this.players);
     });
   }
 
